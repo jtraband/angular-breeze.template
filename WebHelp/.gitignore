@@ -1,0 +1,10 @@
+## For WebHelp, the content files are generated and deployed separately.
+## This directory is just to hold them during development.
+
+*.htm
+*.js
+*.css
+*.gif
+*.png
+
+!insightload.htm

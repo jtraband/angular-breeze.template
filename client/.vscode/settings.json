@@ -1,0 +1,16 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Migrated from previous "File | Auto Save" setting:
+    "editor.fontSize": 12,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.exclude": {
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.map": true,
+        "node_modules": true
+    },
+    "workbench.iconTheme": "vscode-icons"
+}

@@ -1,0 +1,52 @@
+<div>
+  <div class="col-12">
+
+    <div class="signin margin-center mx-auto d-block">
+      <h2 class="form-signin-heading">SpaceControl Insight Login</h2>
+      <form class="form-signin form-horizontal" id="login_form">
+        <div *ngIf="!isSelecting">
+          <div class="form-group">
+            <label for="email">Login name</label>
+            <span>
+              <input name="email" type="email" class="form-control" id="email" [(ngModel)]="email" (keyup.enter)="onSubmit()">
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="password" (keyup.enter)="onSubmit()">
+          </div>
+          <div class="form-group error" *ngIf="error">
+            <b style="color: #dd0000">{{error}}</b>
+          </div>
+          <div class="form-group success" *ngIf="success">
+            <p>{{success}}</p>
+          </div>
+        </div>
+        <div *ngIf="isSelecting">
+          <h4>Select Company</h4>
+          <div style="max-height: calc(100vh - 330px); overflow-y: auto" (dblclick)="onSubmit()">
+            <dx-radio-group [items]="companies" [(value)]="selectedCompanyCode" valueExpr="companyCode">
+              <div *dxTemplate="let co of 'item'">
+                <div style="display: flex; font-weight: bold">
+                  <div style="width: 60px;">{{co.companyCode}}</div><div>{{co.companyName}}</div>
+                </div>
+              </div>              
+            </dx-radio-group>
+          </div>
+        </div>
+
+        <div class="form-group fpl text-right">
+          <button class="btn btn-md btn-primary ml-4 sspb send-working" (click)="onSubmit()" *ngIf="!working">
+            Login
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn-md btn-primary ml-4 sspb send-working" disabled="disabled" *ngIf="working">
+            Working
+            <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

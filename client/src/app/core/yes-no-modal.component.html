@@ -1,0 +1,24 @@
+<div bsModal #yesNoModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+  aria-labelledby="x" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pull-left">{{_title}}</h5>
+        <!--<button type="button" class="close pull-right" aria-label="Close" (click)="select(-1)">
+          <span aria-hidden="true">&times;</span>
+        </button>-->
+      </div>
+      <div class="modal-body">
+        <p [innerHTML]="_message"></p>
+      </div>
+      <div class="modal-footer">
+        <span *ngFor="let buttonName of _buttonNames, let i=index">
+          <button (click)="select(i)" type="button" class="btn btn-sm btn-default btn-primary">{{_buttonNames[i]}}</button>
+        </span>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

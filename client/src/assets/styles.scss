@@ -1,0 +1,663 @@
+/* assets/styles.scss */
+/* You can add global styles to this file, and also import other style files */
+
+/* does this body tag do anything??? */
+/* body {
+  font-family: 'Verdana', sans-serif;
+} */
+
+/* $app- colors and explanation below copied from silverlight app 
+SCStar.SL\Assets\SCStarTheme.xaml
+	<Color x:Key="TextColor">#FFCCCCCC</Color>
+	<Color x:Key="TextLightColor">White</Color>
+	<Color x:Key="TextMediumColor">#FF4B4B4B</Color>
+	<Color x:Key="TextDarkColor">Black</Color>
+	<Color x:Key="TextSelectedColor">#FFFBC714</Color>
+    <Color x:Key="TextKeyColor">#FFFBC714</Color>
+    <Color x:Key="TextCellColor">#FFF4FA91</Color>
+
+*/
+$text-key-color: #FBC714;
+
+/*
+ This application has three background colors:
+		 1) A green color that is the application background color.
+		 2) A lighter green color that is used to fill panels.
+		 3) A gray color normally used as part of a gradient 
+			for background of popups and dialogs         -->
+*/
+$app-background-color: #48686c;
+$app-fill-color: #678c91;
+$app-alt-background-color: #cccccc;
+$app-background-light-color: #b1d5da;
+
+/* reporting colors */
+$app-rpt-grouping-color: #88b0b5;
+$app-rpt-odd-color: #d9e9ec; // darker color
+$app-rpt-even-color: #f4f8f9;  // lighter color
+$app-rpt-background-color: #f4f8f9;
+
+.bg-app {
+  background-color: $app-background-color;
+}
+
+
+// // highlight text edits 
+// input[type=text]:focus, textarea:focus {
+//   background: gold
+// }
+
+// right justifies dx-number-box's with a 'currency' class.
+.currency input[type=text] {
+  text-align: right;
+}
+
+// list styles
+
+.list-parent {
+  border-style: solid;
+  border-radius: 8px;
+  background-color: $app-rpt-odd-color;
+}
+
+.dx-list-item {
+  font-size: 10pt;
+  line-height: 1;
+}
+
+.dx-list-select-all-label {
+  font-weight: bold ;
+}
+
+// dx-data-grid styles
+
+.dx-datagrid-rowsview .dx-row.dx-group-row {
+   color: black;
+}
+
+.dx-datagrid-summary-item {
+  color: black;
+}
+
+// get rid of blue box when a checkbox value is null/undefined
+.dx-checkbox-indeterminate .dx-checkbox-icon:before {
+  background-color: transparent;
+}
+
+//
+
+.pt-0 {
+  padding-top: 0;
+}
+.pt-1 {
+  padding-top: 1rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.font-bold {
+  font-weight: bold;
+} 
+
+.font-normal {
+  font-weight: normal
+}
+
+.font-med {
+  font-size: 11pt;
+}
+
+.font-smallish {
+  font-size: 9pt;
+}
+
+.font-small {
+  font-size: 8pt;
+}
+
+.font-small .dx-datagrid {
+  font-size:8pt;
+}
+
+.font-small .dx-datebox {
+  font-size:8pt;
+}
+
+.dx-revert-button {
+  display: none;
+}
+
+
+td.cell-error {
+  border: 2px dotted red !important;
+}
+
+.fa-exclamation-triangle {
+  color: white;
+  background: red;
+  border: 1px solid red !important;
+}
+
+
+/* apply colors to app */
+@media screen {
+  body {
+    background-color: $app-background-color;
+  }
+
+  .card-header {
+    background-color: $app-fill-color;
+  }
+
+  .card-body {
+    background-color: $app-fill-color;
+    color: #ffffff;
+  }
+
+  .card-group .card-body, .card-columns .card-body {
+    background-color: $app-rpt-background-color;
+    color: #000000;
+  }
+
+  .border-primary {
+      background-color: transparent;
+      border-color: #eee !important;
+  }
+}
+
+/* change card formatting for print */
+@media print {
+  .border-primary {
+    border: 0;
+  }
+  .border-primary > .card-body {
+    padding: 0;
+  }
+  .card-header {
+    background-color: transparent;
+  }
+  .card-body {
+    page-break-inside: avoid;
+  }
+  .card-columns > .card {
+    page-break-inside: avoid;
+  }
+}
+
+.key-color {
+  color: $text-key-color;
+}
+
+
+/* change primary button color to silver */
+.btn-primary {
+    color: #000;
+    background-color: #ddd;
+    border-top-color: #eee;
+    border-right-color: #bbb;
+    border-bottom-color: #bbb;
+    border-left-color: #eee;
+    &:hover {
+      color: #000;
+      background-color: #bbb;
+      border-color: #eee;
+      cursor: pointer;
+    }
+}
+.btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+    color: #000;
+    background-color: #ccc;
+    background-image: none;
+    border-color: #ddd;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    background-color: #eee;
+    border-color: #eee;
+    color:#888
+}
+
+// Make a smaller button
+.btn-group-xs > .btn, .btn-xs {
+    padding  : .4rem .4rem;
+    font-size  : .875rem;
+    line-height  : .5;
+    border-radius : .2rem;
+}
+
+/** spacing utilities */
+
+// text-align right horizontally and center vertically, for labels
+.text-right-middle, .tr-mid {
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+// edit-block for laying out input in columns rather than rows.
+// edit-block is the outer container, inside are divs for columns, and inside that are edit-rows:
+// <div class="edit-block">
+//   <div><!-- column -->
+//     <div class="edit-row">
+//       <label>Auction Date:</label>
+//       <dx-date-box [(value)]="auction.auctionDateTime"></dx-date-box>
+//     </div>
+
+div.edit-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  div { 
+    flex-grow: 1; 
+  }
+  div.edit-row {
+    // edit-row contains a label and input element(s)
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+
+    label {
+      margin-right: 0.5rem;
+      text-align: right;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: 40%;
+    }
+  }
+}
+
+// shift left, for positioning form input labels inside columns
+// .sl-1 {  left: 1rem; }
+// .sl-2 {  left: 2rem; }
+// .sl-3 {  left: 3rem; }
+
+/** dx-grid customization */
+
+/* toolbar containing search bar */
+.dx-datagrid-header-panel { 
+  background-color: $app-fill-color;
+  .dx-toolbar {
+    background-color: $app-fill-color;
+    .dx-datagrid-search-panel {
+      margin: 5px 5px 5px 0;
+    }
+  }
+}
+
+/* grid-cell-editable style to show which cells can be edited */
+.dx-datagrid-rowsview .dx-datagrid-content {
+  .dx-row > td.grid-cell-editable {
+    background-color: #ffffee
+  }
+  .dx-row-alt > td.grid-cell-editable {
+    background-color: #fbfbeb
+  }
+  .dx-selection.dx-row > td.grid-cell-editable {
+    background-color: #e0e0c0; // when row is selected
+  }
+
+  // reduce padding after cells that end in ')', so numbers line up using accounting format (fmtCurrencyA)
+  .dx-row > td[aria-label$=")"] {
+    padding-right: 3px;
+  }
+
+} 
+
+/* get rid of green border around modified cells */
+.dx-datagrid-rowsview .dx-data-row .dx-cell-modified .dx-highlight-outline::after {
+  border-color: transparent;
+}
+
+/* fix too-wide padding on input boxes as columns.  bootstrap col-* classes set padding. */
+dx-text-box.my-auto, dx-select-box.my-auto, dx-date-box.my-auto {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+dx-text-box.slim input.dx-texteditor-input {
+  min-height: 24px; // default is 34px
+  padding-top: 4px; // default 7px
+  padding-bottom: 4px; // default 8px
+}
+
+dx-text-box.selected input {
+  background-color: #fbfbeb;
+}
+
+app-edit-col .dx-texteditor {
+  width: calc(100% - 30px);  // leave some room for info icon
+}
+
+/* for setup calendar */
+div.calendar-small {
+  width: 202px;
+  max-width: 202px;
+  min-width: 202px;
+  margin-left: 3px !important; // override @media bootstrap styles
+  margin-right: 3px !important;
+  margin-bottom: 5px;
+
+  .dx-calendar-navigator {
+    height: 20px;
+    // hide navigation to prev/next month
+    .dx-calendar-navigator-previous-view, .dx-calendar-navigator-next-view {
+      display: none;
+    }
+    .dx-calendar-caption-button.dx-button {
+      font-size: 12px;
+      left: 0;
+      right: 0;
+      border: 0;
+      background-color: $app-background-light-color;
+
+      .dx-button-content {
+        padding: 2px 5px 2px 5px;
+      }
+    }
+  }
+
+  .dx-calendar {
+    width: 200px;
+    min-width: 200px;
+    height: 190px;
+    min-height: 190px;
+  }
+
+  .dx-calendar-body {
+    top: 25px;
+
+    table th {
+      font-size: 10px;
+      padding: 1px 0 3 0;
+    }
+    thead tr {
+      height: 15px;
+      padding-bottom: 6px;
+    }
+  
+    .dx-calendar-cell {
+      font-size: 11px;
+      padding: 1px 4px 1px 4px;
+      width: 29px;
+
+      &.dx-calendar-selected-date {
+        box-shadow: inset 0px 0px 0px 1000px rgba(72, 104, 108, 0.4);
+      }
+      
+      &.dx-calendar-empty-cell {
+        background: none; // get rid of X
+        box-shadow: none;
+        color: #e0e0e0;
+        div.closed {
+          background-color: transparent;
+        }
+      }
+
+    }
+  }
+
+
+  .dx-calendar-cell {
+    // color outer td for holiday, inner div for closed
+    &.holiday { background-color: yellow; }
+    .closed { background-color: cornflowerblue; }
+  }
+}
+
+/* style dx-popup */
+
+.dx-popup-wrapper > .dx-overlay-content {
+  background-color: $app-rpt-background-color;
+  .dx-popup-content {
+    padding: 10px;
+  }
+}
+
+/* Keep header component on top of dx-load-panel */
+app-header .navbar {
+  z-index: 1001;
+}
+
+/* Keep dx-load-panel below the header menu and modals */
+.dx-loadpanel-wrapper {
+  z-index: 1000 !important;
+}
+
+
+app-report-rental-income-details {
+  // shrink row height
+  div.dx-datagrid .dx-row > td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+}
+
+@media (max-width: 720px) {
+  .card-columns {
+      -webkit-column-count: 1;
+      -moz-column-count: 1;
+      column-count: 1;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1100px) {
+  .card-columns {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+  }
+}
+
+@media (min-width: 1100px) {
+  .card-columns {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+  }
+}
+
+app-report-management-summary {
+  .card-columns {
+    column-gap: 1px;
+    .card {
+      margin-bottom: 2px;
+      label {
+        margin-bottom: 2px;
+      }
+      .card-header {
+        padding: 0.5rem .75rem;
+      }
+      .card-body {
+        padding: 10px;
+      }
+    }
+  }
+  .msummary {
+    .row {
+      flex-wrap: nowrap;
+    }
+  }
+  // .card-columns {
+  //   display: inline-block;
+  // }
+}
+
+
+/* global print styles */
+
+@media screen {
+  #printSection {
+    display: none;
+  }
+  .no-screen {
+    display: none !important;
+  }
+  html, body {
+    height: 100%;
+  }
+}
+
+@media print {
+
+  @page {
+    // in chrome, forces landscape for all pages.  better to give user the choice.
+    // size: letter landscape; 
+    margin: 0.5in;
+  }
+
+  
+  #printSection,
+  #printSection * {
+    visibility: visible;
+    orphans: 8; // number of lines that must be kept together
+    widows: 8;
+  }
+  #printSection {
+    -webkit-print-color-adjust: exact;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5000;
+
+    // for printing dx-grids as tables with repeating headers
+    table.grid-print {
+      width: 100%;
+      font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Verdana, sans-serif;
+      font-size: 10pt;
+      margin-bottom: 20px;
+      thead {
+        display: table-header-group;
+      }
+      tbody {
+        // tr:nth-child(odd) {
+        //   background: #fffce0;
+        // }
+        tr.dx-row-alt {
+          background: #fffce0;
+        }
+        tr.dx-group-row {
+          background-color: #eeeedd;
+          font-weight: bold;
+        }
+      }
+      tfoot { 
+        display: table-footer-group; 
+      }
+      tr.dx-freespace-row {
+        display: none;
+      }
+      th, td {
+        padding-right: 5px;
+      }
+      th { 
+        vertical-align: bottom;
+      }
+      td {
+        vertical-align: top;
+        .dx-datagrid-group-opened, .dx-datagrid-group-closed {
+          display: none;  // hide the group toggle arrows
+        }
+      }
+    }
+  }
+  .no-print, .no-print * {
+    display: none !important;
+  }
+
+  // partial fix for lower first letter problem in Bootstrap print
+  span::first-letter{
+    margin: 0 !important; 
+    padding: 0 !important;
+  }
+
+  // in order for page-break to work correctly in Chrome.
+  div:not(.modal):not(.graph-cards):not(.graph-card-1-3):not(.graph-body):not(.outer-box) {
+    position: relative !important;
+    height: inherit !important;
+    overflow: visible !important;
+  }
+
+  .card, .card-group, .card-deck, .card-body {
+    // display: flex breaks printing in FF
+    display: block !important;
+    line-height: 1.0;
+    overflow: visible;
+  }
+
+  .card-header, .card-title, .card-subtitle {
+    page-break-after: avoid;
+  }
+
+  app-report-management-summary .card-columns {
+    display: block;
+    column-count: 2;
+    // margin-left: auto;
+    // margin-right: auto;
+
+    .msummary {
+      font-size: 8pt;
+    }
+  
+    .card {
+      display: inline-block;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      border: none;
+      // border-right: none;
+      max-width: 350px;
+
+      .card-header {
+        page-break-after: avoid;
+        border-top: 1px solid black;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        padding: .25rem .75rem;
+        .btn-primary {
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+      .card-body, .msummary {
+        page-break-inside: avoid;
+        page-break-before: avoid;
+      }
+    }
+  }
+
+  // fix wrapping on app-report-rental-income-details and management-summary when width is < 576px
+ .col-sm-1 { width: 8.33333333%; }
+ .col-sm-2 { width: 16.66666667%; }
+ .col-sm-3 { width: 25%; }
+ .col-sm-4 { width: 33.33333333%; }
+ .col-sm-5 { width: 41.66666667%; }
+ .col-sm-6 { width: 50%; }
+ .col-sm-7 { width: 58.33333333%; }
+ .col-sm-8 { width: 66.66666667%; }
+ .col-sm-9 { width: 75%; }
+ .col-sm-10 { width: 83.33333333%; }
+ .col-sm-11 { width: 91.66666667%; }
+ .col-sm-12 { width: 100%; }
+
+  // #printSection {
+  //   div.dx-datagrid-drag-header, div.dx-treelist-drag-header, div.dx-hidden, div.dx-state-invisible, div.dx-overlay-content {
+  //     display: none !important;
+  //   }
+  // }
+
+  /* wrap text in table cells when printing */
+  // .dx-datagrid-rowsview .dx-row > td {
+  //     word-wrap: break-word !important;
+  //     white-space: normal !important;
+  // }
+}

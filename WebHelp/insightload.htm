@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<title>Insight Help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+/** 
+ * Map of page path (in Insight) to contextId (in WebHelp)
+ * To add a new entry:
+ * 1. Create the new help topic (page) in HelpSmith, e.g. "Auction Rules"
+ * 2. Get the numerical Context ID of the new help topic, e.g. 480
+ * 3. Navigate to related page in Insight, e.g. "Edit Auction Rules"
+ * 4. Look at Insight URL, e.g. 'https://schqtest.us.to/Insight/auction-rules/5000'
+ * 5. Copy the part of the URL that is the path to the page, e.g. 'auction-rules'
+ * 6. Edit the line in the topics list below to set the correct Context ID, 
+ *    OR if the topic is not in the list already,
+ *    Add a line to the 'topics' list below with page path, colon, ContextID, comma, e.g.
+ *      'auction-rules': 480,
+ *    The format is very important.
+ * 7. Save this file.
+ */
+
+var topics = {
+//============ EDIT ONLY BELOW THIS LINE ======================
+'auction-edit': 470,
+'auction-rules': 470,
+'auction-selector': 470,
+'auction-site': 470,
+'audit-edit': 430,
+'audit-selector': 430,
+'audit-site': 430,
+'auto-customer-rates': 460,
+'auto-vacant-rates': 450,
+'download-edit': 40,
+'download-selector': 40,
+'overview-selector': 20,
+'rate-changes-customer-size': 400,
+'rate-changes-customer': 410,
+'rate-changes-one-customer': 440,
+'rate-changes-vacant': 420,
+'report-ar-by-site': 80,
+'report-ar-chart': 80,
+'report-ar-details': 80,
+'report-bank-deposit-by-site': 150,
+'report-bank-deposit-chart': 150,
+'report-bank-deposit-details': 150,
+'report-cr-accrual-by-site': 170,
+'report-cr-accrual-details': 170,
+'report-cr-cash-by-site': 160,
+'report-cr-cash-details': 160,
+'report-incentive-item-by-site': 9,
+'report-incentive-item-chart': 9,
+'report-incentive-item-details': 9,
+'report-incentive-item-edit-target': 9,
+'report-incentive-parameters-edit': 9,
+'report-insurance-by-site': 190,
+'report-insurance-details': 190,
+'report-management-summary': 30,
+'report-marketing-by-site': 200,
+'report-marketing-details': 200,
+'report-merchandise-by-site': 140,
+'report-merchandise-details': 140,
+'report-non-standard-rent-by-site': 120,
+'report-non-standard-rent-details': 120,
+'report-operational-variance-by-site': 130,
+'report-operational-variance-chart': 130,
+'report-operational-variance-details': 130,
+'report-operational-variance-reversals-chart': 130,
+'report-operational-variance-uncollected-chart': 130,
+'report-rate-analysis-by-site': 110,
+'report-rate-analysis-details': 110,
+'report-rental-activity-by-site': 100,
+'report-rental-activity-chart': 100,
+'report-rental-activity-details': 100,
+'report-rental-income-by-site': 70,
+'report-rental-income-chart': 70,
+'report-rental-income-details': 70,
+'report-sales-journal-by-site': 180,
+'report-sales-journal-details': 180,
+'setup-account-numbers-edit': 370,
+'setup-account-numbers-selector': 370,
+'setup-business-charges-edit': 350,
+'setup-business-charges-selector': 350,
+'setup-business-charges-site': 350,
+'setup-calendar-edit': 380,
+'setup-calendar-selector': 380,
+'setup-company-edit': 210,
+'setup-company-main': 210,
+'setup-company-rules': 220,
+'setup-delinquency-edit': 240,
+'setup-delinquency-fees': 240,
+'setup-delinquency-selector': 240,
+'setup-delinquency-taxes': 240,
+'setup-delinquency-text-edit': 250,
+'setup-delinquency-text-selector': 250,
+'setup-letters-edit': 320,
+'setup-letters-selector': 320,
+'setup-marketing-edit': 260,
+'setup-marketing-selector': 260,
+'setup-marketing-site': 260,
+'setup-merchandise-discounts-edit': 310,
+'setup-merchandise-discounts-selector': 310,
+'setup-merchandise-discounts-site': 310,
+'setup-merchandise-edit': 300,
+'setup-merchandise-selector': 300,
+'setup-merchandise-site': 300,
+'setup-payment-types-edit': 360,
+'setup-payment-types-selector': 360,
+'setup-payment-types-site': 360,
+'setup-region-edit': 210,
+'setup-rent-discounts-edit': 290,
+'setup-rent-discounts-selector': 290,
+'setup-rent-discounts-site': 290,
+'setup-report-parameters-site': 270,
+'setup-required-fields-edit': 390,
+'setup-required-fields-selector': 390,
+'setup-site-edit': 210,
+'setup-site-rules-selector': 230,
+'setup-site-rules': 230,
+'setup-size-types-edit': 270,
+'setup-size-types-site': 270,
+'setup-space-sizes-edit': 270,
+'setup-space-sizes-selector': 270,
+'setup-space-sizes-site': 270,
+'setup-storage-spaces-edit': 280,
+'setup-storage-spaces-selector': 280,
+'setup-storage-spaces-site': 280,
+'setup-taxes-edit': 340,
+'setup-taxes-selector': 340,
+'setup-taxes-site': 340,
+'setup-texts-edit': 330,
+'setup-texts-selector': 330,
+'setup-user-edit': 60,
+'setup-user-main': 60,
+'setup-user-roles-edit': 60,
+//============ EDIT ONLY ABOVE THIS LINE ======================
+};
+
+// expect url with page name in the hash
+// like /InsightHelp/insightload.htm#setup-user-main
+var hash = location.hash;
+var page = hash && hash.length > 2 && hash.substring(1);
+var id = page && topics[page];
+
+if (id) {
+  loc = './?context=' + id;
+} else {
+  loc = './';
+}
+
+// navigate to index.htm to load help
+document.location.replace(loc);
+
+</script>
+</head>
+</html>

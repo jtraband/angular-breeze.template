@@ -1,0 +1,10 @@
+<div class="no-print">
+  <app-header></app-header>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <dx-load-panel [visible]="busyService.isBusy | async" [showPane]="true" [shadingColor]="'rgba(0,0,0,0.4)'"></dx-load-panel>
+  <app-yes-no-modal></app-yes-no-modal>
+  <app-toast></app-toast>
+  <app-validation-errors-modal></app-validation-errors-modal>
+</div>

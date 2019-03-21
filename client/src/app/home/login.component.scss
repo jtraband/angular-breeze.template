@@ -1,0 +1,68 @@
+/* login.component.scss */
+
+.signin {
+  margin-top: 80px;
+  width: 30%;
+  min-width: 400px;
+  background-color: #88b0b5;
+  //background-color: #758296;
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.signin h2 {
+  background-color: #292b2c;
+  color: #D3DDEB;
+  font-size: 1em;
+  padding: 0.7em 1em;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.contact-msg {
+  margin-top: 25px;
+  width: 30%;
+  min-width: 400px;
+}
+
+.contact-msg textarea {
+  height: 150px;
+}
+
+.contact-msg label {
+  font-size: 0.9em;
+}
+
+.form-signin {
+  padding: 1em 3em;
+}
+
+.form-signin p {
+  font-size: 0.9em;
+  color: #3A4657;
+}
+
+.form-signin figure img {
+  width: 100%;
+}
+
+.form-signin .form-group {
+  margin-bottom: 0.5rem !important;
+}
+
+.form-signin .form-group>a {
+  color: #3A4657;
+  font-size: 0.75em;
+}
+
+.form-signin .form-group span {
+  position: relative;
+  display: block;
+}
+
+.form-signin .form-group span i {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  margin-top: 0;
+}
