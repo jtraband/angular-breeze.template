@@ -22,6 +22,7 @@ export class BaseEntity implements Entity {
       return anno;
     }
 
+    // tslint:disable-next-line:member-ordering
     static greaterThanZeroValidator = new Validator('greaterThanZero',
       (value: any, context) => {
         if (!Number.isFinite(value) || value <= 0) {

@@ -10,6 +10,10 @@ var _ = require('lodash');
 
 var tsGen = require('./tools/entity-generator/tsgen-core');
 
+var efModelName = 'Model_NorthwindIB_CF.EFCore';
+efDllName = '../server/' + efModelName + '/bin/Debug/netstandard2.0/' + efModelName + '.dll';
+jsonModelName = './/src/app/model/entities/' + efModelName +'.json' ;
+
 // Public tasks
 
 gulp.task('default', ['help']);
@@ -24,59 +28,27 @@ gulp.task('help', taskListing.withFilters(function (taskName) {
 
 gulp.task('generate-entities', function () {
     tsGen.generate({
-        inputFileName: './src/app/model/entities/SCInsight-Site.metadata.json',
-        outputFolder: './src/app/model/entities/site',
+        inputFileName: jsonModelName,
+        outputFolder: './src/app/model/entities/NorthwindIB',
         camelCase: true,
         kebabCaseFileNames: true,
         baseClassName: 'BaseEntity',
-        codePrefix: 'Site'
+        codePrefix: 'NorthwindIB'
     });
-    tsGen.generate({
-        inputFileName: './src/app/model/entities/SCInsight-Company.metadata.json',
-        outputFolder: './src/app/model/entities/company',
-        camelCase: true,
-        kebabCaseFileNames: true,
-        baseClassName: 'BaseEntity',
-        codePrefix: 'Company'
-    });
+
 });
 
 gulp.task('generate-metadata', function() {
     // assumes that the 'breeze.tooling' github repo exists on disk as a sibling of this repo
-    // var exe = fs.realpathSync('./tools/metadata-generator/MetadataGenerator.exe');
-    var exe = fs.realpathSync('/git/Breeze/breeze.tooling/MetadataGenerator/MetadataGenerator/bin/Debug/MetadataGenerator.exe');
-    var spawnInfo1 = spawnExt(exe,
-      ['-i', '../SCInsight/SCInsight.Data.Company/bin/debug/SCInsight.Data.Company.dll', 
-      '-o', './src/app/model/entities/SCInsight-Company.metadata.json' ]);
-    var spawnInfo2 = spawnExt(exe,
-      ['-i', '../SCInsight/SCInsight.Data.Site/bin/debug/SCInsight.Data.Site.dll', 
-      '-o', './src/app/model/entities/SCInsight-Site.metadata.json' ]);      
-    return Q.promise.all([spawnInfo1.promise, spawnInfo2.promise])  ;
+    // path to MetadataGenerator.dll ( this is a .NET Core dll so needs to be run with 'dotnet' cmd.)
+    var dll = fs.realpathSync('/GitHub/breeze.tooling/MetadataGenerator.EFCore/MetadataGenerator.EFCore/bin/Release/netcoreapp2.2/metadatagenerator.efcore.dll');
+
+    var spawnInfo1 = spawnExt('dotnet',
+      [ dll,
+      '-i', efDllName,
+      '-o', jsonModelName]);
+    return Q.promise.all([spawnInfo1.promise]);
 });
-
-// Not currently needed.
-// gulp.task('watch-less', function () {
-//     gulp.watch('./app/styles/*.less', ['less']);  // Watch all the .less files, then run the less task
-// });
-
-// gulp.task('less', function () {
-//     return gulp.src(['./app/styles/*.less'])
-//         .pipe(plumber({
-//             errorHandler: function (err) {
-//                 console.log(err);
-//                 this.emit('end');
-//             }
-//         }))
-//         .pipe(less({
-//             paths: [path.join(__dirname, 'less', 'includes')]
-//         }))
-//         .pipe(gulp.dest(function (file) {
-//             return file.base;
-//         }));
-// });
-
-
-
 
 // returns both a promise and the spawned process so that it can be killed if needed.
 function spawnExt(command, args, options) {
@@ -108,4 +80,26 @@ function spawnExt(command, args, options) {
   });
   return { proc: proc, promise: deferred.promise };
 }
+
+// Not currently needed.
+// gulp.task('watch-less', function () {
+//     gulp.watch('./app/styles/*.less', ['less']);  // Watch all the .less files, then run the less task
+// });
+
+// gulp.task('less', function () {
+//     return gulp.src(['./app/styles/*.less'])
+//         .pipe(plumber({
+//             errorHandler: function (err) {
+//                 console.log(err);
+//                 this.emit('end');
+//             }
+//         }))
+//         .pipe(less({
+//             paths: [path.join(__dirname, 'less', 'includes')]
+//         }))
+//         .pipe(gulp.dest(function (file) {
+//             return file.base;
+//         }));
+// });
+
 

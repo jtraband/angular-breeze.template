@@ -6,19 +6,15 @@ import { BaseEntity } from '../base-entity';
 
 /// </code-import>
 
-export class TimeZone extends BaseEntity  {
+export class Comment extends BaseEntity  {
 
   /// <code> Place custom code between <code> tags
   
   /// </code>
 
   // Generated code. Do not place code below this line.
-  timeZoneId: number;
-  timeZoneName: string;
-  timeZoneAbbreviation: string;
-  timeZoneAbbreviationDST: string;
-  status: number;
-  updateDate: Date;
-  updatingUserName: string;
+  createdOn: Date;
+  seqNum: number;
+  comment1: string;
 }
 
