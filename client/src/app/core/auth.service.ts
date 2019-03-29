@@ -17,23 +17,11 @@ export class AuthUser {
   /** true if admin or support */
   isAdmin: boolean;
   sessionMinutes: number;
+  // instead of companyCode use your own custom fields here.
   companyCode: string;
-  companyName: string;
-  companies: AuthCompany[];
-  sites: AuthSite[];
   featureIds: number[];
 }
 
-export class AuthCompany {
-  companyCode: string;
-  companyName: string;
-}
-
-export class AuthSite {
-  siteId: number;
-  siteCode: string;
-  siteName: string;
-}
 
 /**
  * Authenticate user and get user profile data from server.
@@ -53,16 +41,15 @@ export class AuthService {
   }
 
   /** Login and populate _user by building AuthUser from server data */
-  login(userName: string, password: string, companyCode: string): Promise<boolean> {
+  login(userName: string, password: string): Promise<boolean> {
     const url = environment.apiRoot + 'api/Login/login';
     const creds = { userName: userName, password: password };
-    if (companyCode) { creds['companyCode'] = companyCode; }
     return this._http.post(url, creds)
         .toPromise()
         .then((res: any) => {
             this._user = mapObject<AuthUser>(res);
             MessageBus.notify({ message: 'login' });
-            if (this._user.companyCode) {
+            if (this._user.userDisplayName) {
               this.setKeepAlive();
               this.navigate();
             }
@@ -149,7 +136,7 @@ export class AuthService {
     idle.onTimeout.subscribe(() => {
       this.logout();
     });
-    idle.onTimeoutWarning.subscribe((countdown) => { 
+    idle.onTimeoutWarning.subscribe((countdown) => {
       if (countdown % 10 === 0) {
         MessageBus.notify({
           message: 'You will be logged out in ' + countdown + ' seconds.  Click to keep your session alive.',

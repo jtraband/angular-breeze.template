@@ -23,7 +23,7 @@ import { CoreModule } from './core/core.module';
 import { DbCompanyResolver } from './core/db-context-resolver';
 import { DbContextService } from './core/db-context.service';
 import { DialogService } from './core/dialog.service';
-import { CompanyManagerProvider } from './core/entity-manager-provider';
+import { NorthwindIBManagerProvider } from './core/entity-manager-provider';
 
 import { HeaderComponent } from './home/header.component';
 import { HomeComponent } from './home/home.component';
@@ -64,7 +64,7 @@ import { SharedModule } from './shared/shared.module';
   providers: [
     DbCompanyResolver,
     DbContextService,
-    CompanyManagerProvider,
+    NorthwindIBManagerProvider,
     AuthService,
     DialogService,
     Title,

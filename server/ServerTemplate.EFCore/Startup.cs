@@ -48,6 +48,10 @@ namespace Test.AspNetCore {
 
       var tmp = Configuration.GetConnectionString("NorthwindIB_CF");
       services.AddDbContext<NorthwindIBContext_CF>(options => options.UseSqlServer(tmp));
+
+      // services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()));
+
+      
     }
 
 
@@ -73,6 +77,20 @@ namespace Test.AspNetCore {
         FileProvider = new PhysicalFileProvider(path),
         RequestPath = new PathString("")
       });
+
+      //app.UseCors(builder => builder
+      //  .AllowAnyHeader()
+      //  .AllowAnyMethod()
+      //  .AllowAnyOrigin()
+      //  .AllowCredentials()
+      //  );
+
+      app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials()
+            );
 
       app.UseMvc();
       

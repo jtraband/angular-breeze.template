@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate {
         return false;
       }
 
-      // make sure user has permissions to company and site
+      // make sure user has permissions desired route
       const user = this._authService.getUser();
 
       const co = route.params['company'];
@@ -28,14 +28,6 @@ export class AuthGuardService implements CanActivate {
         console.log('No access to ' + co);
         this._router.navigate(['/home']);
         return false;
-      } else {
-        const si = route.params['site'];
-        // tslint:disable-next-line:triple-equals
-        if (si && !user.sites.find(us => us.siteCode == si || us.siteId == si)) {
-          console.log('No access to ' + si);
-          this._router.navigate(['/home']);
-          return false;
-        }
       }
 
       if (user.isAdmin) { return true; }

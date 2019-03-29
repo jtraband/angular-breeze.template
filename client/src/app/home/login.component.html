@@ -2,9 +2,9 @@
   <div class="col-12">
 
     <div class="signin margin-center mx-auto d-block">
-      <h2 class="form-signin-heading">SpaceControl Insight Login</h2>
+      <h2 class="form-signin-heading">Login</h2>
       <form class="form-signin form-horizontal" id="login_form">
-        <div *ngIf="!isSelecting">
+        <div >
           <div class="form-group">
             <label for="email">Login name</label>
             <span>
@@ -22,18 +22,7 @@
             <p>{{success}}</p>
           </div>
         </div>
-        <div *ngIf="isSelecting">
-          <h4>Select Company</h4>
-          <div style="max-height: calc(100vh - 330px); overflow-y: auto" (dblclick)="onSubmit()">
-            <dx-radio-group [items]="companies" [(value)]="selectedCompanyCode" valueExpr="companyCode">
-              <div *dxTemplate="let co of 'item'">
-                <div style="display: flex; font-weight: bold">
-                  <div style="width: 60px;">{{co.companyCode}}</div><div>{{co.companyName}}</div>
-                </div>
-              </div>              
-            </dx-radio-group>
-          </div>
-        </div>
+
 
         <div class="form-group fpl text-right">
           <button class="btn btn-md btn-primary ml-4 sspb send-working" (click)="onSubmit()" *ngIf="!working">

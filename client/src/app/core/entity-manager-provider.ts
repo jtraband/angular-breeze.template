@@ -1,4 +1,4 @@
-import { TimeZone } from '../model/entities/loginControl/time-zone';
+import { NorthwindIBMetadata } from './../model/entities/NorthwindIB/metadata';
 
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
@@ -19,13 +19,10 @@ import 'breeze-client/breeze.uriBuilder.odata';
 // import 'breeze-client/adapter-model-library-backing-store';
 // import 'breeze-client/adapter-uri-builder-odata';
 
-import { CompanyRegistrationHelper } from '../model/entities/company/registration-helper';
-import { CompanyMetadata } from '../model/entities/company/metadata';
-
 import { EntityTypeAnnotation } from '../model/entity-type-annotation';
 import { ErrorLogger } from './error-logger';
 import * as moment from 'moment-mini';
-
+import { NorthwindIBRegistrationHelper } from '../model/entities/NorthwindIB/registration-helper';
 
 abstract class EntityManagerProvider {
 
@@ -44,8 +41,7 @@ abstract class EntityManagerProvider {
 
       // See this link: https://stackoverflow.com/questions/17657459/breezejs-date-is-not-set-to-the-right-time
       DataType.parseDateFromServer = function (source) {
-        // SC dates are DateTimeOffsets, but should not be converted to the browser timezone
-        // Keeps it compatible with legacy SL app
+        // code below is for when dates are DateTimeOffsets, but should not be converted to the browser timezone
         const s = (source && source.length > 23) ? source.substring(0, 23) : source;
         const mo = moment(s);
         const date = mo.toDate();
@@ -68,7 +64,7 @@ abstract class EntityManagerProvider {
             const date = value as Date;
             // make ISO string for current time zone (not UTC)
             value = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toJSON();
-            // SC dates are DateTimeOffsets, but should not be given the browser timezone nor UTC
+            // for use if dates are DateTimeOffsets, but should not be given the browser timezone nor UTC
             value = value.substring(0, 23); // chop off the timezone
           }
           return value;
@@ -124,17 +120,17 @@ abstract class EntityManagerProvider {
 }
 
 @Injectable()
-export class CompanyManagerProvider extends EntityManagerProvider {
+export class NorthwindIBManagerProvider extends EntityManagerProvider {
 
   constructor(public errorLogger: ErrorLogger, protected authService: AuthService) {
     super(errorLogger, authService);
-    this.metadata = CompanyMetadata;
-    this.registrationHelper = CompanyRegistrationHelper;
+    this.metadata = NorthwindIBMetadata;
+    this.registrationHelper = NorthwindIBRegistrationHelper;
   }
 
   getDataService() {
     return new DataService({
-      serviceName: environment.companyApiRoot,
+      serviceName: environment.entitiesApiRoot,
       hasServerMetadata: false
     });
   }
@@ -147,8 +143,6 @@ export class CompanyManagerProvider extends EntityManagerProvider {
     //     name: 'password',
     //     dataType: DataType.String
     // }));
-
-
 
   }
 }

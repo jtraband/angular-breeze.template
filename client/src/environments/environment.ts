@@ -5,8 +5,7 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'http://localhost:58647/',
-  siteApiRoot: 'http://localhost:58647/breeze/site',
-  companyApiRoot: 'http://localhost:58647/breeze/company',
+  apiRoot: 'http://localhost:59916/',
+  entitiesApiRoot: 'http://localhost:59916/breeze/NorthwindIBModel',
   helpRoot: 'http://localhost:10436/'
 };

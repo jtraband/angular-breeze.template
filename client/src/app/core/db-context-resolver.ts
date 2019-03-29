@@ -10,7 +10,7 @@ export class DbCompanyResolver implements Resolve<DbContext> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
     this._url = this._router.url;
 
-    const p1 = this._dbcService.setCompany(route.params['company']);
+    const p1 = this._dbcService.initializeUow();
     return p1;
   }
 }
