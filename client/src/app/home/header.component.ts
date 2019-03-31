@@ -10,7 +10,7 @@ import { environment } from 'environments/environment';
 })
 
 export class HeaderComponent implements OnInit {
-  version = '1.0.89';
+  version = '1.0.0';
   time = new Date().getTime();
 
   constructor(private _router: Router, private _authService: AuthService) {

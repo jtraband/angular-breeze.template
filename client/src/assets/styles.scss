@@ -1,29 +1,17 @@
 /* assets/styles.scss */
 /* You can add global styles to this file, and also import other style files */
 
-/* does this body tag do anything??? */
-/* body {
-  font-family: 'Verdana', sans-serif;
-} */
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
-/* $app- colors and explanation below copied from silverlight app 
-SCStar.SL\Assets\SCStarTheme.xaml
-	<Color x:Key="TextColor">#FFCCCCCC</Color>
-	<Color x:Key="TextLightColor">White</Color>
-	<Color x:Key="TextMediumColor">#FF4B4B4B</Color>
-	<Color x:Key="TextDarkColor">Black</Color>
-	<Color x:Key="TextSelectedColor">#FFFBC714</Color>
-    <Color x:Key="TextKeyColor">#FFFBC714</Color>
-    <Color x:Key="TextCellColor">#FFF4FA91</Color>
 
-*/
 $text-key-color: #FBC714;
 
 /*
  This application has three background colors:
 		 1) A green color that is the application background color.
 		 2) A lighter green color that is used to fill panels.
-		 3) A gray color normally used as part of a gradient 
+		 3) A gray color normally used as part of a gradient
 			for background of popups and dialogs         -->
 */
 $app-background-color: #48686c;
@@ -41,11 +29,6 @@ $app-rpt-background-color: #f4f8f9;
   background-color: $app-background-color;
 }
 
-
-// // highlight text edits 
-// input[type=text]:focus, textarea:focus {
-//   background: gold
-// }
 
 // right justifies dx-number-box's with a 'currency' class.
 .currency input[type=text] {
@@ -105,7 +88,7 @@ $app-rpt-background-color: #f4f8f9;
 
 .font-bold {
   font-weight: bold;
-} 
+}
 
 .font-normal {
   font-weight: normal
@@ -242,22 +225,14 @@ td.cell-error {
   margin-bottom: auto;
 }
 
-// edit-block for laying out input in columns rather than rows.
-// edit-block is the outer container, inside are divs for columns, and inside that are edit-rows:
-// <div class="edit-block">
-//   <div><!-- column -->
-//     <div class="edit-row">
-//       <label>Auction Date:</label>
-//       <dx-date-box [(value)]="auction.auctionDateTime"></dx-date-box>
-//     </div>
 
 div.edit-block {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
-  div { 
-    flex-grow: 1; 
+  div {
+    flex-grow: 1;
   }
   div.edit-row {
     // edit-row contains a label and input element(s)
@@ -284,7 +259,7 @@ div.edit-block {
 /** dx-grid customization */
 
 /* toolbar containing search bar */
-.dx-datagrid-header-panel { 
+.dx-datagrid-header-panel {
   background-color: $app-fill-color;
   .dx-toolbar {
     background-color: $app-fill-color;
@@ -311,7 +286,7 @@ div.edit-block {
     padding-right: 3px;
   }
 
-} 
+}
 
 /* get rid of green border around modified cells */
 .dx-datagrid-rowsview .dx-data-row .dx-cell-modified .dx-highlight-outline::after {
@@ -384,7 +359,7 @@ div.calendar-small {
       height: 15px;
       padding-bottom: 6px;
     }
-  
+
     .dx-calendar-cell {
       font-size: 11px;
       padding: 1px 4px 1px 4px;
@@ -393,7 +368,7 @@ div.calendar-small {
       &.dx-calendar-selected-date {
         box-shadow: inset 0px 0px 0px 1000px rgba(72, 104, 108, 0.4);
       }
-      
+
       &.dx-calendar-empty-cell {
         background: none; // get rid of X
         box-shadow: none;
@@ -466,33 +441,6 @@ app-report-rental-income-details {
   }
 }
 
-app-report-management-summary {
-  .card-columns {
-    column-gap: 1px;
-    .card {
-      margin-bottom: 2px;
-      label {
-        margin-bottom: 2px;
-      }
-      .card-header {
-        padding: 0.5rem .75rem;
-      }
-      .card-body {
-        padding: 10px;
-      }
-    }
-  }
-  .msummary {
-    .row {
-      flex-wrap: nowrap;
-    }
-  }
-  // .card-columns {
-  //   display: inline-block;
-  // }
-}
-
-
 /* global print styles */
 
 @media screen {
@@ -511,11 +459,11 @@ app-report-management-summary {
 
   @page {
     // in chrome, forces landscape for all pages.  better to give user the choice.
-    // size: letter landscape; 
+    // size: letter landscape;
     margin: 0.5in;
   }
 
-  
+
   #printSection,
   #printSection * {
     visibility: visible;
@@ -550,8 +498,8 @@ app-report-management-summary {
           font-weight: bold;
         }
       }
-      tfoot { 
-        display: table-footer-group; 
+      tfoot {
+        display: table-footer-group;
       }
       tr.dx-freespace-row {
         display: none;
@@ -559,7 +507,7 @@ app-report-management-summary {
       th, td {
         padding-right: 5px;
       }
-      th { 
+      th {
         vertical-align: bottom;
       }
       td {
@@ -576,7 +524,7 @@ app-report-management-summary {
 
   // partial fix for lower first letter problem in Bootstrap print
   span::first-letter{
-    margin: 0 !important; 
+    margin: 0 !important;
     padding: 0 !important;
   }
 
@@ -598,66 +546,5 @@ app-report-management-summary {
     page-break-after: avoid;
   }
 
-  app-report-management-summary .card-columns {
-    display: block;
-    column-count: 2;
-    // margin-left: auto;
-    // margin-right: auto;
 
-    .msummary {
-      font-size: 8pt;
-    }
-  
-    .card {
-      display: inline-block;
-      page-break-inside: avoid;
-      break-inside: avoid;
-      border: none;
-      // border-right: none;
-      max-width: 350px;
-
-      .card-header {
-        page-break-after: avoid;
-        border-top: 1px solid black;
-        border-left: none;
-        border-right: none;
-        border-radius: 0;
-        padding: .25rem .75rem;
-        .btn-primary {
-          background-color: transparent;
-          border-color: transparent;
-        }
-      }
-      .card-body, .msummary {
-        page-break-inside: avoid;
-        page-break-before: avoid;
-      }
-    }
-  }
-
-  // fix wrapping on app-report-rental-income-details and management-summary when width is < 576px
- .col-sm-1 { width: 8.33333333%; }
- .col-sm-2 { width: 16.66666667%; }
- .col-sm-3 { width: 25%; }
- .col-sm-4 { width: 33.33333333%; }
- .col-sm-5 { width: 41.66666667%; }
- .col-sm-6 { width: 50%; }
- .col-sm-7 { width: 58.33333333%; }
- .col-sm-8 { width: 66.66666667%; }
- .col-sm-9 { width: 75%; }
- .col-sm-10 { width: 83.33333333%; }
- .col-sm-11 { width: 91.66666667%; }
- .col-sm-12 { width: 100%; }
-
-  // #printSection {
-  //   div.dx-datagrid-drag-header, div.dx-treelist-drag-header, div.dx-hidden, div.dx-state-invisible, div.dx-overlay-content {
-  //     display: none !important;
-  //   }
-  // }
-
-  /* wrap text in table cells when printing */
-  // .dx-datagrid-rowsview .dx-row > td {
-  //     word-wrap: break-word !important;
-  //     white-space: normal !important;
-  // }
 }

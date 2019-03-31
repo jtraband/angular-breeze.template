@@ -11,6 +11,8 @@ import { EntityManagerProviderGuard } from './core/entity-manager-guard';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login.component';
+import { CustomersComponent } from './home/customers.component';
+import { DbContextResolver } from './core/db-context-resolver';
 
 
 // helpId values come from WebHelp/js/topic-table.js
@@ -23,6 +25,12 @@ const appRoutes: Routes = [
     path: 'home',
     data: { title: 'Home' },
     component: HomeComponent,
+    canActivate: [AuthGuardService, EntityManagerProviderGuard],
+  }, {
+    path: 'customers',
+    data: { title: 'Customers'},
+    component: CustomersComponent,
+    resolve: { dbContext: DbContextResolver },
     canActivate: [AuthGuardService, EntityManagerProviderGuard],
   },
   //  {

@@ -1,58 +1,42 @@
-<div *ngIf="!!user" class="card border-primary mx-3">
+<div class="card border-primary mx-3">
   <div class="card-header text-center">
     <h4 class="card-title">Home</h4>
-    <p class="card-text">Click on one of the links below to select an operation.</p>
+    <p class="card-text">Click on one of the links below to select an operation.
+    </p>
   </div>
   <div class="card-body text-center navbar-inverse">
     <div class="d-flex flex-row justify-content-center img-items">
       <div class="p-5">
-        <a routerLink="/overview-selector/{{user.companyCode}}">
-          <img src="assets/images/Overview.png" >
+        <a routerLink="/customers">
+          <img src="assets/images/Overview.png">
           <div class="text-center text-light">Overview</div>
         </a>
       </div>
       <div class="p-5">
-        <a routerLink="/report-management-summary/{{user.companyCode}}/0/All">
-          <img src="assets/images/Reports.png" >
+        <a routerLink="/">
+          <img src="assets/images/Exports.png">
           <div class="text-center text-light">Reports</div>
         </a>
       </div>
+
       <div class="p-5">
-        <a routerLink="/rate-site-selector/{{user.companyCode}}">
-          <img src="assets/images/Rates.png" >
-          <div class="text-center text-light">Rates</div>
-        </a>
-      </div>
-      <div class="p-5">
-        <a routerLink="/setup/setup-main">
-          <img src="assets/images/Setup.png" >
+        <a routerLink="/">
+          <img src="assets/images/Setup.png">
           <div class="text-center text-light">Setup</div>
         </a>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-center img-items">
       <div class="p-5">
-        <a routerLink="/report-incentive-item-by-site/{{user.companyCode}}/0/All">
-          <img src="assets/images/Incentive.png" >
+        <a routerLink="/">
+          <img src="assets/images/Accounting.png">
           <div class="text-center text-light">Incentive</div>
         </a>
       </div>
       <div class="p-5">
-        <a routerLink="/download-selector/{{user.companyCode}}">
-          <img src="assets/images/BatchFileDownload.png" >
+        <a routerLink="/">
+          <img src="assets/images/Calendar.png">
           <div class="text-center text-light">Download</div>
-        </a>
-      </div>
-      <div class="p-5">
-        <a routerLink="/audit-selector/{{user.companyCode}}">
-          <img src="assets/images/Audit.png" >
-          <div class="text-center text-light">Audit</div>
-        </a>
-      </div>
-      <div class="p-5">
-        <a routerLink="/auction-selector/{{user.companyCode}}">
-          <img src="assets/images/Auction.png" >
-          <div class="text-center text-light">Auction</div>
         </a>
       </div>
     </div>

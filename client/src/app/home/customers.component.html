@@ -1,0 +1,35 @@
+<div *ngIf="isPageReady" class="card border-primary mx-3 ">
+  <div class="card-header text-center">
+    <app-back-button [parent]="self"></app-back-button>
+    <h4 class="card-title">Customers</h4>
+    <p class="card-subtitle">Update the information below as needed and then
+      click Save.</p>
+  </div>
+  <div class="card mx-2 mt-2">
+    <div class="card-body">
+      <!-- <h6 class="card-subtitle mb-2 text-center font-weight-bold">Space Information</h6> -->
+      <ag-grid-angular #agGrid style="width: 100%; height: 350px;"
+        class="ag-theme-balham"
+        [gridOptions]="gridOptions" [columnDefs]="colDefs"
+        [showToolPanel]="showToolPanel" [rowData]="customers"
+        animateRows
+        pagination
+        rowHeight="22" rowSelection="multiple"
+        (modelUpdated)="onModelUpdated()" (cellClicked)="onCellClicked($event)"
+        (cellDoubleClicked)="onCellDoubleClicked($event)">
+      </ag-grid-angular>
+    </div>
+  </div>
+
+
+  <div class="my-2 text-center">
+    <button type="button" class="btn btn-sm btn-primary  mt-1" (click)="save()">
+      Save
+    </button>
+    <button type="button" class="btn btn-sm btn-primary  mt-1"
+      (click)="cancelChanges()">
+      Cancel
+    </button>
+  </div>
+
+</div>

@@ -1,7 +1,11 @@
+import { CustomersComponent } from './home/customers.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+
+import { AgGridModule } from 'ag-grid-angular';
+
 import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
 import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import { DxDateBoxModule } from 'devextreme-angular/ui/date-box';
@@ -13,6 +17,7 @@ import { DxSwitchModule } from 'devextreme-angular/ui/switch';
 import { DxTextAreaModule } from 'devextreme-angular/ui/text-area';
 import { DxTextBoxModule } from 'devextreme-angular/ui/text-box';
 import { DxLoadPanelModule } from 'devextreme-angular/ui/load-panel';
+
 import { TooltipConfig, TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +25,7 @@ import { AppComponent } from './app.component';
 
 import { AuthService } from './core/auth.service';
 import { CoreModule } from './core/core.module';
-import { DbCompanyResolver } from './core/db-context-resolver';
+import { DbContextResolver } from './core/db-context-resolver';
 import { DbContextService } from './core/db-context.service';
 import { DialogService } from './core/dialog.service';
 import { NorthwindIBManagerProvider } from './core/entity-manager-provider';
@@ -37,7 +42,7 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
-
+    CustomersComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     SharedModule,
     AppRoutingModule,
+
+    AgGridModule.withComponents([]),
 
     DxDataGridModule,
     DxDateBoxModule,
@@ -58,11 +65,12 @@ import { SharedModule } from './shared/shared.module';
     DxSwitchModule,
     DxPopupModule,
     DxLoadPanelModule,
+
     TooltipModule.forRoot(),
     NgIdleKeepaliveModule.forRoot()
   ],
   providers: [
-    DbCompanyResolver,
+    DbContextResolver,
     DbContextService,
     NorthwindIBManagerProvider,
     AuthService,

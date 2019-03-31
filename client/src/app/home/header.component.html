@@ -4,50 +4,30 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   <a class="navbar-brand" style="padding-top: 2px; padding-bottom: 2px" routerLink="/home">
-    <img src="assets/images/Logo.png" height="41" width="145" [title]="'Insight version ' + version" [alt]="'Insight ' + version">
+    <img src="assets/images/Logo.png" height="41" width="145" [title]="'Version ' + version" [alt]="version">
   </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul *ngIf="user" class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/overview-selector/{{user.companyCode}}">Overview</a>
+        <a class="nav-link" routerLink="/}">Overview</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/report-management-summary/{{user.companyCode}}/0/All">Reports</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/rate-site-selector/{{user.companyCode}}">Rates</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/report-incentive-item-by-site/{{user.companyCode}}/0/All">Incentive</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/download-selector/{{user.companyCode}}">Download</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/audit-selector/{{user.companyCode}}">Audit</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/auction-selector/{{user.companyCode}}">Auction</a>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link" routerLink="/setup/setup-main">Setup</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{helpLink}}" (click)="helpClick()" target="insighthelp" style="margin-left: 8px">Help</a>
+        <a class="nav-link" href="{{helpLink}}" (click)="helpClick()" target="help" style="margin-left: 8px">Help</a>
       </li>
     </ul>
 
-    <div *ngIf="user" class="navbar-brand">
-      {{user.companyName}}
-    </div>
-      
+
     <form class="form-inline my-2 my-lg-0">
-      
+
       <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
       <span *ngIf="user" class="ml-sm-2 font-small" style="color: #eeeeee">
-        <label>{{user.userDisplayName}}</label><span>({{user.companyCode}})</span>
+        <label>{{user.userDisplayName}}</label>
       </span>
     </form>
     <div *ngIf="user" class="navbar-nav">

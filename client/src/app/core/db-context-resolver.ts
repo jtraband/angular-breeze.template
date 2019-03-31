@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Injectable()
-export class DbCompanyResolver implements Resolve<DbContext> {
+export class DbContextResolver implements Resolve<DbContext> {
   private _url: string;
   constructor(private _dbcService: DbContextService, private _router: Router) { }
 
